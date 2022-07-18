@@ -21,6 +21,8 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 gem 'foreman'
 
 # Use Active Storage variant
