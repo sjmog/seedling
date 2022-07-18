@@ -1,0 +1,6 @@
+<%= react_component(
+      "App",
+      { apiUrl: root_url,
+        formToken: form_authenticity_token,
+        currentUser: current_user&.display_as_json,
+        flash: flash }) %>

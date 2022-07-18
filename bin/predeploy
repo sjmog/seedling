@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+rake assets:clobber
+EDITOR="sublime" bin/rails credentials:edit
+RAILS_ENV=production rails assets:precompile
+rm -rf config/credentials.yml.enc
+rm -rf config/master.key
