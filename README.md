@@ -5,7 +5,7 @@ A Rails/React/Tailwind starter application.
 ### Getting started
 
 - Clone the repository.
-- Update the application details in config/application.rb and config.database.yml.
+- Update the application details in config/application.rb, config/database.yml, config/cable.yml, and package.json.
 
 ### What exists?
 
