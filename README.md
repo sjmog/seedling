@@ -13,3 +13,6 @@ A Rails/React/Tailwind starter application.
 - Some tooling to make deployment to Heroku smoother (e.g. bin/release).
 - A generic ActionCable setup with a `Subscriber` component that "just works" with websockets.
 
+### Deployment
+
+Ready for deployment to Heroku. To avoid asset compilation problems, run `bin/predeploy` before deploying.
