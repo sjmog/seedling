@@ -17,7 +17,7 @@ const Navigation = () => {
   }
 
   const navigation = [
-    { name: 'Home', href: '/home', current: true }
+    { name: 'Home', href: '/', current: true }
   ]
 
   if(currentUser.isAdmin) {
