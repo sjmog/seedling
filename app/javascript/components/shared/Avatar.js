@@ -1,22 +1,18 @@
 import React, { Fragment, useState, useRef } from "react"
-import { Overlay, Tooltip } from "react-bootstrap"
 import DefaultAvatar from 'images/default-avatar.svg'
 import { classNames } from 'utils'
 import { pure } from 'recompose'
 
 const Avatar = ({ type, id, name, src, avatar, size, ...props }) => {
-  const [showTooltip, setShowTooltip] = useState(false)
   const target = useRef(null)
 
   const link = src || avatar
 
   const handleMouseOver = () => {
-    setShowTooltip(true)
     if(props.onMouseOver) props.onMouseOver(id)
   }
 
   const handleMouseLeave = () => {
-    setShowTooltip(false)
     if(props.onMouseLeave) props.onMouseLeave(id)
   }
 
@@ -55,8 +51,10 @@ const Avatar = ({ type, id, name, src, avatar, size, ...props }) => {
     xxl: 'h-24 w-24'
   }
 
+  const Wrapper = props.tooltip ? Tooltip : Fragment
+
   return (
-    <>
+    <Wrapper text={props.tooltipText}>
       {
         type === 'avatar'
         ? <img 
@@ -105,16 +103,7 @@ const Avatar = ({ type, id, name, src, avatar, size, ...props }) => {
           </div>
         : null
       }
-
-      {
-        props.tooltip &&
-        <Overlay target={target.current} show={showTooltip} placement="top">
-          <Tooltip>
-            {props.tooltipText || name}
-          </Tooltip>
-        </Overlay>
-      }
-    </>
+    </Wrapper>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState } from 'react'
 import AppContext from 'contexts/AppContext'
 import { Dialog, Transition } from '@headlessui/react'
-import Logo from 'images/techmap-logo.png'
+import Logo from 'images/logo.png'
 import { useLocation, Link } from 'react-router-dom'
 import {
   Bars3Icon,
@@ -16,8 +16,6 @@ import {
 } from '@heroicons/react/24/outline'
 
 import { Tooltip, Avatar, NotificationBadge } from 'components/shared'
-import UserMenu from 'components/navigation/UserMenu'
-import NotificationsMenu from 'components/navigation/NotificationsMenu'
 
 const Navigation = (props) => {
   const { currentUser } = useContext(AppContext)
@@ -29,11 +27,6 @@ const Navigation = (props) => {
 
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon, canAccess: true },
-    { name: 'Discussions', href: '/discussions', icon: ChatBubbleLeftRightIcon, canAccess: true },
-    { name: 'Coaching', href: '/coaching', icon: AcademicCapIcon, canAccess: currentUser.isTrainer },
-    { name: 'Transcripts', href: '/transcripts', icon: DocumentTextIcon, canAccess: currentUser.isTrainer },
-    { name: 'Directory', href: '/directory', icon: UsersIcon, canAccess: true },
-    { name: 'Certification', href: '/certification', icon: CheckBadgeIcon, canAccess: true }
   ]
 
   return(
@@ -88,7 +81,7 @@ const Navigation = (props) => {
                     <img
                       className="h-8 w-auto"
                       src={Logo}
-                      alt="TechMap"
+                      alt="Seedling"
                     />
                   </Link>
                   <nav aria-label="Sidebar" className="mt-5">
@@ -143,7 +136,7 @@ const Navigation = (props) => {
                 <img
                   className="h-8 w-auto"
                   src={Logo}
-                  alt="TechMap"
+                  alt="Seedling"
                 />
               </Link>
               <nav aria-label="Sidebar" className="flex flex-col items-center space-y-3 py-6">
@@ -161,36 +154,13 @@ const Navigation = (props) => {
                 ))}
               </nav>
             </div>
-            <div className="flex flex-col items-center pb-3">
-              <Tooltip
-               placement='right'
-               delay={200}
-               panel={
-                <NotificationsMenu
-                 notifications={props.notifications}
-                 setNotificationRead={props.setNotificationRead} />
-               }>
-                <Link
-                 to='/notifications'
-                 className="block flex items-center rounded-lg p-4 text-indigo-200 hover:bg-indigo-700 relative cursor-pointer">
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  <span className="sr-only">Notifications</span>
-                  <NotificationBadge notifications={props.notifications} className="top-1 right-1" />
-                </Link>
-              </Tooltip>
-            </div>
             <div className="flex flex-shrink-0 pb-[5.5rem]">
               <div className="w-full flex-shrink-0">
-                <Tooltip
-                 placement='right'
-                 delay={200}
-                 panel={<UserMenu />}>
-                   <Avatar className="block mx-auto" { ...currentUser } />
-                   <div className="sr-only">
-                     <p>{currentUser.name}</p>
-                     <p>Account settings</p>
-                   </div>
-                </Tooltip>
+                 <Avatar className="block mx-auto" { ...currentUser } />
+                 <div className="sr-only">
+                   <p>{currentUser.name}</p>
+                   <p>Account settings</p>
+                 </div>
                </div>
             </div>
           </div>
@@ -204,7 +174,7 @@ const Navigation = (props) => {
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=white"
-              alt="Your Company"
+              alt="Seedling"
             />
           </div>
           <div>

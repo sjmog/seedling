@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Combobox } from '@headlessui/react'
 import useFetch from 'hooks/useFetch'
-import UserLabels from 'components/users/UserLabels'
+import Labels from 'components/shared/Labels'
 import { classNames } from 'utils'
 
 const RemoteCombobox = ({ title, placeholder, defaultValue, fetchPath, optionValue, optionLabel, ...props }) => {
@@ -35,7 +35,7 @@ const RemoteCombobox = ({ title, placeholder, defaultValue, fetchPath, optionVal
     <Combobox as="div" value={selectedOptions} by={optionValue} onChange={handleSetOptions} nullable multiple className='w-full relative'>
      {
       selectedOptions.length > 0 &&
-      <UserLabels
+      <Labels
        className="block mb-2"
        labels={selectedOptions}
        dismissible
