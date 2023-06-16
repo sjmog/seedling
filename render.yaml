@@ -1,0 +1,58 @@
+previewsEnabled: true
+services:
+  - type: web
+    name: seedling
+    region: frankfurt
+    env: ruby
+    repo: https://github.com/sjmog/seedling.git
+    numInstances: 1
+    buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean; bundle exec rails db:migrate;
+    startCommand: bundle exec puma -C config/puma.rb
+    plan: starter
+    previewPlan: starter
+    envVars:
+      - key: SECRET_KEY_BASE
+        value: xxx
+      - key: RACK_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: seedling-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: seedling-redis
+          type: redis
+          property: connectionString
+  - type: redis
+    name: seedling-redis
+    region: frankfurt
+    plan: starter
+    maxmemoryPolicy: noeviction
+    ipAllowList: []
+  - type: worker
+    name: seedling-worker
+    env: ruby
+    region: frankfurt
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq -e production
+    autoDeploy: false
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: seedling-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: seedling-redis
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        value: xxx
+
+databases:
+  - name: seedling-db
+    region: frankfurt
+    plan: starter
+    previewPlan: starter
+    ipAllowList: []
