@@ -1,18 +1,18 @@
 # Seedling
 
-A Rails/React/Tailwind starter application.
+A Rails/React/Tailwind/Devise starter application, optimised for deployment to Render.
 
 ### Getting started
 
 - Clone the repository.
-- Update the application details in config/application.rb, config/database.yml, config/cable.yml, and package.json.
+- Update the application details in config/application.rb, config/database.yml, config/cable.yml, package.json, and render.yaml.
 
 ### What exists?
 
 - Some basic React/Tailwind components to build with. Extend with TailwindUI or anything else you want.
-- Some tooling to make deployment to Heroku smoother (e.g. bin/release).
-- A generic ActionCable setup with a `Subscriber` component that "just works" with websockets.
+- A `render.yaml` to make deployment to Render easy.
+- A generic ActionCable setup with a `Subscriber` component that "just works" with websockets. (also a redis, sidekiq etc)
 
 ### Deployment
 
-Ready for deployment to Heroku. To avoid asset compilation problems, run `bin/predeploy` before deploying.
+Ready for deployment to Render. To avoid asset compilation problems, run `bin/predeploy` before deploying.
