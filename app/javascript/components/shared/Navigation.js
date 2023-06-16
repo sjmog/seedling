@@ -15,7 +15,7 @@ import {
   CheckBadgeIcon
 } from '@heroicons/react/24/outline'
 
-import { Tooltip, Avatar, NotificationBadge } from 'components/shared'
+import { Tooltip, Avatar, NotificationBadge, UserMenu } from 'components/shared'
 
 const Navigation = (props) => {
   const { currentUser } = useContext(AppContext)
@@ -154,13 +154,18 @@ const Navigation = (props) => {
                 ))}
               </nav>
             </div>
-            <div className="flex flex-shrink-0 pb-[5.5rem]">
+            <div className="flex flex-shrink-0 pb-3">
               <div className="w-full flex-shrink-0">
-                 <Avatar className="block mx-auto" { ...currentUser } />
-                 <div className="sr-only">
-                   <p>{currentUser.name}</p>
-                   <p>Account settings</p>
-                 </div>
+                <Tooltip
+                 placement='right'
+                 delay={200}
+                 panel={<UserMenu />}>
+                   <Avatar className="block mx-auto" { ...currentUser } />
+                   <div className="sr-only">
+                     <p>{currentUser.name}</p>
+                     <p>Account settings</p>
+                   </div>
+                </Tooltip>
                </div>
             </div>
           </div>

@@ -51,7 +51,7 @@ const Avatar = ({ type, id, name, src, avatar, size, ...props }) => {
     xxl: 'h-24 w-24'
   }
 
-  const Wrapper = props.tooltip ? Tooltip : Fragment
+  const Wrapper = props.tooltip ? Tooltip : 'span'
 
   return (
     <Wrapper text={props.tooltipText}>

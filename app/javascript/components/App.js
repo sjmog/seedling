@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import AppContext from 'contexts/AppContext'
 import FlashContext from 'contexts/FlashContext'
 import { useActionCable } from '@aersoftware/react-use-action-cable'
-import { Flash, Grid, Navigation } from './shared'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Main from './Main'
+
+const Root = (props) => <Router><App {...props} /></Router>
 
 const App = (props) => {
   const { actionCable } = useActionCable(`${props.apiUrl.replace(/^(http|https)/, "ws")}cable`)
@@ -35,19 +38,10 @@ const App = (props) => {
           setType: setFlashType
         }
       }>
-        <div className="min-h-full">
-          <Navigation />
-
-          { props.flash?.length > 0
-            && <Flash flash={props.flash} /> }
-            
-          <main>
-            Your app here!
-          </main>
-        </div>
+        <Main flash={props.flash} />
       </FlashContext.Provider>
     </AppContext.Provider>
   )
 }
 
-export default App
+export default Root

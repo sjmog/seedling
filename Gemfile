@@ -38,6 +38,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "react-rails", "~> 2.6"
 
+# Sidekiq for asynchronous jobs
+gem 'sidekiq'
+gem 'sidekiq-delay'
+gem 'sidekiq-status'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

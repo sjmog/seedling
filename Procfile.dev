@@ -1,5 +1,4 @@
 web: bin/rails server -p 3000
 redis: bin/start-redis
 sidekiq: bin/start-sidekiq
-css: bin/rails tailwindcss:watch
 webpack: bin/webpack-dev-server
