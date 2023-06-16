@@ -1,17 +1,25 @@
 import React from 'react'
+import { classNames } from 'utils'
 
-// use className animate-ping to flash
 const Indicator = (props) => {
+  const TYPE_TO_COLOR = {
+    success: 'bg-green-400',
+    loading: 'bg-gray-200',
+    notification: 'bg-red-400'
+  }
   return(
-    <div className="w-3 mr-2 relative top-0.5">
-      <span className={`absolute h-3 w-3 ${ props.className } inline-flex rounded-full bg-green-400 opacity-75`} />
-      <span className="absolute h-3 w-3 inline-flex rounded-full bg-green-400" />
-    </div>
+    <div
+     className={classNames(
+      "h-2 w-2 rounded-full",
+      TYPE_TO_COLOR[props.type],
+      props.pulse && 'animate-pulse',
+      props.className
+     )} />
   )
 }
 
 Indicator.defaultProps = {
-  className: ''
+  type: 'success'
 }
 
 export default Indicator
